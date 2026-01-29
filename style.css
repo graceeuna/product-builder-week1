@@ -1,3 +1,11 @@
+:root {
+    --background-color: #f0f2f5;
+    --text-color: #333;
+    --button-bg-color: #007bff;
+    --button-text-color: white;
+    --button-hover-bg-color: #0056b3;
+}
+
 body {
     font-family: 'Helvetica Neue', sans-serif;
     display: flex;
@@ -5,7 +13,16 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f2f5;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    --background-color: #1a1a1a;
+    --text-color: #f0f2f5;
+    --button-bg-color: #0056b3;
+    --button-hover-bg-color: #007bff;
 }
 
 .container {
@@ -13,7 +30,7 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 30px;
 }
 
@@ -36,17 +53,21 @@ h1 {
     font-weight: bold;
 }
 
-#generate-btn {
+#generate-btn, #theme-toggle-btn {
     padding: 15px 30px;
     font-size: 1em;
     cursor: pointer;
     border: none;
     border-radius: 8px;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     transition: background-color 0.3s ease;
 }
 
-#generate-btn:hover {
-    background-color: #0056b3;
+#generate-btn:hover, #theme-toggle-btn:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+#theme-toggle-btn {
+    margin-top: 10px;
 }
