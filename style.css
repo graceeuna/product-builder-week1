@@ -18,13 +18,6 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark-mode {
-    --background-color: #1a1a1a;
-    --text-color: #f0f2f5;
-    --button-bg-color: #0056b3;
-    --button-hover-bg-color: #007bff;
-}
-
 .container {
     text-align: center;
 }
@@ -34,26 +27,24 @@ h1 {
     margin-bottom: 30px;
 }
 
-.numbers-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.number-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.menu-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
-    color: white;
-    font-weight: bold;
+    min-height: 100px;
+    margin-bottom: 30px;
 }
 
-#generate-btn, #theme-toggle-btn {
+.menu-item {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#generate-btn {
     padding: 15px 30px;
     font-size: 1em;
     cursor: pointer;
@@ -64,10 +55,6 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-#generate-btn:hover, #theme-toggle-btn:hover {
+#generate-btn:hover {
     background-color: var(--button-hover-bg-color);
-}
-
-#theme-toggle-btn {
-    margin-top: 10px;
 }

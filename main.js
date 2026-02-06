@@ -1,55 +1,37 @@
-const numbersContainer = document.getElementById('numbers-container');
+const menuContainer = document.getElementById('menu-container');
 const generateBtn = document.getElementById('generate-btn');
-const themeToggleBtn = document.getElementById('theme-toggle-btn');
 
-const generateLottoNumbers = () => {
-    const numbers = new Set();
-    while (numbers.size < 6) {
-        const randomNumber = Math.floor(Math.random() * 45) + 1;
-        numbers.add(randomNumber);
-    }
-    return Array.from(numbers).sort((a, b) => a - b);
+const dinnerMenus = [
+    '치킨',
+    '피자',
+    '삼겹살',
+    '초밥',
+    '파스타',
+    '김치찌개',
+    '된장찌개',
+    '족발',
+    '보쌈',
+    '떡볶이'
+];
+
+const generateRandomMenu = () => {
+    const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
+    return dinnerMenus[randomIndex];
 };
 
-const getColorForNumber = (number) => {
-    if (number <= 10) return '#fbe400'; // Yellow
-    if (number <= 20) return '#69c8f2'; // Blue
-    if (number <= 30) return '#ff7272'; // Red
-    if (number <= 40) return '#aaa';     // Gray
-    return '#b0d840'; // Green
-};
-
-const displayNumbers = (numbers) => {
-    numbersContainer.innerHTML = '';
-    numbers.forEach(number => {
-        const circle = document.createElement('div');
-        circle.classList.add('number-circle');
-        circle.textContent = number;
-        circle.style.backgroundColor = getColorForNumber(number);
-        numbersContainer.appendChild(circle);
-    });
+const displayMenu = (menu) => {
+    menuContainer.innerHTML = '';
+    const menuItem = document.createElement('div');
+    menuItem.classList.add('menu-item');
+    menuItem.textContent = menu;
+    menuContainer.appendChild(menuItem);
 };
 
 generateBtn.addEventListener('click', () => {
-    const lottoNumbers = generateLottoNumbers();
-    displayNumbers(lottoNumbers);
+    const randomMenu = generateRandomMenu();
+    displayMenu(randomMenu);
 });
-
-themeToggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark-mode');
-    } else {
-        localStorage.removeItem('theme');
-    }
-});
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    document.body.classList.add(savedTheme);
-}
 
 // Initial generation
-const initialNumbers = generateLottoNumbers();
-displayNumbers(initialNumbers);
+const initialMenu = generateRandomMenu();
+displayMenu(initialMenu);
