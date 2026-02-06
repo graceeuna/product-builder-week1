@@ -14,6 +14,11 @@
         <h1>오늘 저녁 뭐 먹지?</h1>
         <div id="menu-container" class="menu-container"></div>
         <button id="generate-btn">메뉴 추천</button>
+        <hr>
+        <div>Teachable Machine Image Model</div>
+        <button type="button" onclick="initRPS()">Start</button>
+        <div id="webcam-container"></div>
+        <div id="label-container"></div>
 
         <div id="disqus_thread"></div>
         <script>
@@ -30,6 +35,8 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

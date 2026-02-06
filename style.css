@@ -105,6 +105,17 @@ form button[type="submit"]:hover {
     background-color: var(--button-hover-bg-color);
 }
 
+#webcam-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#label-container {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
 #generate-btn:hover {
     background-color: var(--button-hover-bg-color);
 }
