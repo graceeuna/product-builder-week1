@@ -67,6 +67,44 @@ h1 {
     margin: 0 5px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+form label {
+    text-align: left;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+form button[type="submit"] {
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
 #generate-btn:hover {
     background-color: var(--button-hover-bg-color);
 }
