@@ -21,6 +21,8 @@ body {
 .container {
     text-align: center;
     padding-bottom: 50px; /* Added padding to the bottom */
+    max-width: 960px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the container */
 }
 
 h1 {
