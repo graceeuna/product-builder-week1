@@ -31,6 +31,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Added to allow items to wrap */
+    gap: 10px; /* Added for spacing between items */
     min-height: 100px;
     margin-bottom: 30px;
 }
