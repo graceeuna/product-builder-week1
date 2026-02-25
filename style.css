@@ -130,11 +130,75 @@ main h2 {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex; /* Added for aligning button */
+    flex-direction: column; /* Added for aligning button */
+    justify-content: space-between; /* Added for aligning button */
 }
 
 .food-card h3 {
     margin-top: 0;
     color: var(--secondary-color);
+}
+
+.food-card .recipe-button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Aligns button to the left within flex container */
+}
+
+.food-card .recipe-button:hover {
+    background-color: #0056b3;
+}
+
+/* Recipe Pages */
+.recipe-page h2 {
+    text-align: left;
+    color: var(--primary-color);
+}
+
+.recipe-section {
+    background-color: var(--card-bg-color);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: left; /* Align text within recipe section to left */
+}
+
+.recipe-section h3 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.recipe-section ul,
+.recipe-section ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.recipe-section li {
+    margin-bottom: 8px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
 }
 
 /* Footer */
