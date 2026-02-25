@@ -14,29 +14,27 @@ const dinnerMenus = [
     '떡볶이'
 ];
 
-const generateRandomMenus = (count = 3) => {
-    const shuffled = [...dinnerMenus].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
+const generateRandomMenu = () => {
+    const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
+    return dinnerMenus[randomIndex];
 };
 
-const displayMenus = (menus) => {
-    menuContainer.innerHTML = ''; // Clear previous menus
-    menus.forEach(menu => {
-        const menuItem = document.createElement('div');
-        menuItem.classList.add('menu-item');
-        menuItem.textContent = menu;
-        menuContainer.appendChild(menuItem);
-    });
+const displayMenu = (menu) => {
+    menuContainer.innerHTML = '';
+    const menuItem = document.createElement('div');
+    menuItem.classList.add('menu-item');
+    menuItem.textContent = menu;
+    menuContainer.appendChild(menuItem);
 };
 
 generateBtn.addEventListener('click', () => {
-    const randomMenus = generateRandomMenus();
-    displayMenus(randomMenus);
+    const randomMenu = generateRandomMenu();
+    displayMenu(randomMenu);
 });
 
 // Initial generation
-const initialMenus = generateRandomMenus();
-displayMenus(initialMenus);
+const initialMenu = generateRandomMenu();
+displayMenu(initialMenu);
 
 // Rock, Paper, Scissors Game
 const URL = "https://teachablemachine.withgoogle.com/models/EtkqgUiWa/";
