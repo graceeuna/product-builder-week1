@@ -160,14 +160,28 @@ main h2 {
 .recipe-page h2 {
     text-align: left;
     color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
 }
 
 .recipe-section {
     background-color: var(--card-bg-color);
-    padding: 25px;
+    padding: 20px;
     border-radius: 8px;
-    margin-bottom: 25px;
-    text-align: left; /* Align text within recipe section to left */
+    margin-bottom: 20px;
+    text-align: left;
+    flex: 1;
+    min-width: 300px;
+}
+
+.recipe-section.ingredients {
+    flex: 0 0 300px; /* Fixed width for ingredients on larger screens */
 }
 
 .recipe-section h3 {
