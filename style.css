@@ -5,6 +5,7 @@
     --text-color: #333;
     --card-bg-color: #fff;
     --footer-bg-color: #e9ecef;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 body {
@@ -22,7 +23,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header and Navigation */
+/* Header */
 header {
     background-color: var(--card-bg-color);
     padding: 20px 0;
@@ -60,36 +61,43 @@ nav a {
     font-weight: bold;
 }
 
-/* Main Content */
-.intro, .recommendation, #comments {
+/* Common Sections */
+.intro, .recommendation, .contact-section, #comments {
     background-color: var(--card-bg-color);
     padding: 40px;
     border-radius: 12px;
     margin-bottom: 30px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow);
 }
 
-/* Recommendation Area */
-#menu-container {
-    min-height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
+/* Recommendation Card Style */
 .menu-item {
-    font-size: 1.5em;
-    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #eee;
     border-radius: 15px;
-    background-color: #f0f2f5;
-    width: 100%;
-    animation: fadeIn 0.5s ease-in-out;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
+.menu-item h3 {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.menu-item p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
 #generate-btn {
-    padding: 18px 40px;
+    padding: 18px 45px;
     font-size: 1.2em;
     cursor: pointer;
     border: none;
@@ -97,59 +105,83 @@ nav a {
     background-color: var(--secondary-color);
     color: white;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(0,123,255,0.3);
 }
 
 #generate-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,123,255,0.4);
-}
-
-#generate-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/* Loading Animation */
-.loader {
-    display: flex;
-    gap: 15px;
-    font-size: 3rem;
-}
-
-.loader span {
-    animation: bounce 0.6s infinite alternate;
-}
-
-.loader span:nth-child(2) { animation-delay: 0.2s; }
-.loader span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes bounce {
-    from { transform: translateY(0); }
-    to { transform: translateY(-20px); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    box-shadow: 0 8px 25px rgba(0,123,255,0.4);
 }
 
 .recipe-button {
     display: inline-block;
-    padding: 12px 25px;
-    margin-top: 20px;
+    padding: 12px 30px;
     background-color: #28a745;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 30px 0;
-    color: #888;
+/* Contact Page - Vertical Cards */
+.contact-grid {
+    display: flex;
+    flex-direction: column; /* 한 줄에 하나씩 배치 */
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
+
+.contact-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    text-align: left;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.contact-card:hover {
+    transform: translateX(10px); /* 옆으로 살짝 미는 효과 */
+    border-color: var(--secondary-color);
+}
+
+.contact-card h3 {
+    margin: 0 0 10px 0;
+    color: var(--secondary-color);
+}
+
+.contact-card p {
+    margin: 0;
+    color: #555;
+}
+
+/* Food Grid for Category Pages */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.food-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Animations */
+.loader { display: flex; gap: 15px; font-size: 3rem; justify-content: center; }
+.loader span { animation: bounce 0.6s infinite alternate; }
+.loader span:nth-child(2) { animation-delay: 0.2s; }
+.loader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+footer { text-align: center; padding: 40px 0; color: #888; }
