@@ -117,7 +117,7 @@ nav a {
 .recipe-button {
     display: inline-block;
     padding: 12px 30px;
-    background-color: #28a745;
+    background-color: var(--secondary-color); /* 파란색으로 변경 */
     color: white;
     text-decoration: none;
     border-radius: 8px;
