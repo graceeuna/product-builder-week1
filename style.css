@@ -22,7 +22,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header and Navigation - 다른 페이지와 동일한 심플 구조 */
+/* Header and Navigation */
 header {
     background-color: var(--card-bg-color);
     padding: 20px 0;
@@ -43,7 +43,7 @@ header h1 {
 
 header h1 a {
     text-decoration: none;
-    color: #000; /* 검정색 로고 */
+    color: #000;
     font-weight: bold;
 }
 
@@ -57,7 +57,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: var(--secondary-color); /* 파란색 메뉴 */
+    color: var(--secondary-color);
     font-weight: bold;
     font-size: 1.1em;
 }
@@ -75,16 +75,90 @@ nav a:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.intro h2 {
+.intro h2, .contact-section h2 {
     text-align: center;
-    font-size: 1.5em; /* 다른 페이지 서브제목과 조화로운 크기 */
+    font-size: 1.8em;
     color: #000;
     margin-bottom: 20px;
 }
 
-.intro p {
-    text-align: center;
-    color: #666;
+/* Contact Page Cards - Vertical */
+.contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.contact-card h3 {
+    margin: 0 0 15px 0;
+    color: var(--secondary-color);
+    font-size: 1.4em;
+    border-bottom: 2px solid #f8f9fa;
+    padding-bottom: 10px;
+}
+
+.contact-card p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Contact Form Styling */
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
 }
 
 /* Recommendation Area & Slot Machine */
@@ -127,7 +201,7 @@ nav a:hover {
     margin-bottom: 15px;
 }
 
-/* Buttons */
+/* General Buttons */
 #generate-btn {
     padding: 15px 40px;
     font-size: 1.1em;
@@ -140,8 +214,6 @@ nav a:hover {
     transition: opacity 0.3s;
 }
 
-#generate-btn:hover { opacity: 0.9; }
-
 .recipe-button {
     display: inline-block;
     padding: 12px 25px;
@@ -153,7 +225,7 @@ nav a:hover {
     margin-top: 15px;
 }
 
-/* Food Grid for Category Pages */
+/* Grid Layouts */
 .food-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
