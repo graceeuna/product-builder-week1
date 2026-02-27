@@ -12,24 +12,22 @@ const dinnerMenus = [
     { name: '🍚 비빔밥', description: '다양한 채소와 고명, 고추장을 넣어 비벼 먹는 한국 대표 건강식입니다.', recipeLink: 'bibimbap_recipe.html' },
     { name: '🥩 불고기', description: '달콤 짭짤한 양념에 재운 소고기를 구워 먹는 한국 전통 요리입니다.', recipeLink: 'bulgogi_recipe.html' },
     { name: '🍖 갈비찜', description: '간장 양념에 부드럽게 익힌 갈비찜은 잔치나 특별한 날에 빠지지 않는 고급 한식입니다.', recipeLink: 'galbijjim_recipe.html' },
-    { name: '🍣 초밥', description: '신선한 해산물과 밥의 완벽한 조화! 입안 가득 바다의 향이 퍼지는 일본 대표 요리입니다.', recipeLink: 'sushi_recipe.html' },
-    { name: '🍜 라멘', description: '깊고 진한 육수에 쫄깃한 면발, 다양한 고명까지! 추운 날 따뜻하게 몸을 녹여줍니다.', recipeLink: 'ramen_recipe.html' },
+    { name: '🍣 초밥', description: '신선한 해산물과 밥의 완벽한 조화! 일본 대표 요리입니다.', recipeLink: 'sushi_recipe.html' },
+    { name: '🍜 라멘', description: '깊고 진한 육수에 쫄깃한 면발! 추운 날 따뜻하게 몸을 녹여줍니다.', recipeLink: 'ramen_recipe.html' },
     { name: '🍱 돈까스', description: '바삭하게 튀겨낸 돼지고기에 달콤한 소스를 곁들인 일본식 커틀릿입니다.', recipeLink: 'donkatsu_recipe.html' },
     { name: '🍜 우동', description: '두툼하고 쫄깃한 면발과 시원한 국물이 특징인 일본 면 요리입니다.', recipeLink: 'udon_recipe.html' },
     { name: '🍛 규동', description: '달콤 짭짤한 소고기 덮밥으로, 간단하면서도 든든한 한 끼 식사로 좋습니다.', recipeLink: 'gyudon_recipe.html' },
-    { name: '🍕 피자', description: '쫄깃한 도우 위에 풍성한 토핑과 쭉 늘어나는 치즈의 조합! 전 세계인의 사랑을 받습니다.', recipeLink: 'pizza_recipe.html' },
-    { name: '🍝 파스타', description: '다양한 소스와 면의 조화가 일품인 이탈리안 요리입니다. 분위기 있는 저녁에 최고입니다.', recipeLink: 'pasta_recipe.html' },
-    { name: '🥩 스테이크', description: '육즙 가득한 소고기를 완벽하게 구워낸 서양 요리의 꽃! 특별한 날에 좋습니다.', recipeLink: 'steak_recipe.html' },
-    { name: '🍔 햄버거', description: '부드러운 빵 사이에 육즙 가득한 패티와 신선한 채소를 넣어 만든 인기 메뉴입니다.', recipeLink: 'hamburger_recipe.html' },
-    { name: '🥗 샐러드', description: '신선한 채소와 다양한 토핑이 어우러진 건강하고 가벼운 식사입니다.', recipeLink: 'salad_recipe.html' }
+    { name: '🍕 피자', description: '쫄깃한 도우 위에 풍성한 토핑과 쭉 늘어나는 치즈의 조합!', recipeLink: 'pizza_recipe.html' },
+    { name: '🍝 파스타', description: '다양한 소스와 면의 조화가 일품인 이탈리안 요리입니다.', recipeLink: 'pasta_recipe.html' },
+    { name: '🥩 스테이크', description: '육즙 가득한 소고기를 완벽하게 구워낸 서양 요리의 꽃!', recipeLink: 'steak_recipe.html' },
+    { name: '🍔 햄버거', description: '부드럽게 빵 사이에 육즙 가득한 패티와 신선한 채소를 넣은 메뉴!', recipeLink: 'hamburger_recipe.html' },
+    { name: '🥗 샐러드', description: '신선한 채소와 다양한 토핑이 어우러진 가벼운 식사입니다.', recipeLink: 'salad_recipe.html' }
 ];
 
-const showLoading = () => {
+const renderSlotMachine = (menuName) => {
     menuContainer.innerHTML = `
-        <div class="loader">
-            <span>🍕</span>
-            <span>🍖</span>
-            <span>🍜</span>
+        <div class="slot-wrapper">
+            <h3 class="slot-text">${menuName}</h3>
         </div>
     `;
 };
@@ -37,30 +35,36 @@ const showLoading = () => {
 const displayMenu = (menu) => {
     menuContainer.innerHTML = `
         <div class="menu-item">
-            <h3 style="font-size: 2.5rem; margin-bottom: 10px;">${menu.name}</h3>
-            <p style="margin-bottom: 15px;">${menu.description}</p>
-            ${menu.recipeLink ? `<a href="${menu.recipeLink}" class="recipe-button">레시피 보기</a>` : ''}
+            <h3>${menu.name}</h3>
+            <p>${menu.description}</p>
+            ${menu.recipeLink ? `<a href="${menu.recipeLink}" class="recipe-button">요리 방법 보기</a>` : ''}
         </div>
     `;
 };
 
 generateBtn.addEventListener('click', () => {
-    generateBtn.disabled = true;
-    generateBtn.textContent = '찾는 중... 🔍';
+    if (generateBtn.disabled) return;
     
-    // 로딩 애니메이션 시작
-    showLoading();
-
-    // 2초 후 추천 결과 표시
-    setTimeout(() => {
+    generateBtn.disabled = true;
+    generateBtn.textContent = '최고의 메뉴를 고르는 중... 🎰';
+    
+    let count = 0;
+    const maxSpins = 20; 
+    const spinInterval = setInterval(() => {
         const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
-        const randomMenu = dinnerMenus[randomIndex];
-        displayMenu(randomMenu);
-        
-        generateBtn.disabled = false;
-        generateBtn.textContent = '다른 메뉴 더 보기 🎰';
-    }, 2000);
+        renderSlotMachine(dinnerMenus[randomIndex].name);
+        count++;
+
+        if (count >= maxSpins) {
+            clearInterval(spinInterval);
+            const finalMenu = dinnerMenus[Math.floor(Math.random() * dinnerMenus.length)];
+            displayMenu(finalMenu);
+            
+            generateBtn.disabled = false;
+            generateBtn.textContent = '다른 메뉴 추천받기 🎰';
+        }
+    }, 100);
 });
 
-// 초기 화면에서는 안내 메시지만 작게 표시 (버튼이 강조됨)
-menuContainer.innerHTML = '<p style="color: #888;">버튼을 누르면 메뉴를 추천해 드려요!</p>';
+// 초기 화면 설정
+menuContainer.innerHTML = '<p style="color: #888; font-size: 1.2em;">🎰 오늘의 저녁, 운명에 맡겨보세요!</p>';

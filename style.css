@@ -5,7 +5,6 @@
     --text-color: #333;
     --card-bg-color: #fff;
     --footer-bg-color: #e9ecef;
-    --shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 body {
@@ -23,7 +22,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
+/* Header and Navigation - 다른 페이지와 동일한 심플 구조 */
 header {
     background-color: var(--card-bg-color);
     padding: 20px 0;
@@ -37,10 +36,14 @@ header .container {
     align-items: center;
 }
 
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
 header h1 a {
     text-decoration: none;
-    color: var(--primary-color);
-    font-size: 1.5em;
+    color: #000; /* 검정색 로고 */
     font-weight: bold;
 }
 
@@ -48,140 +51,138 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
-}
-
-nav li {
-    display: inline-block;
-    margin-left: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 nav a {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* 파란색 메뉴 */
     font-weight: bold;
+    font-size: 1.1em;
 }
 
-/* Common Sections */
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Section */
 .intro, .recommendation, .contact-section, #comments {
     background-color: var(--card-bg-color);
     padding: 40px;
-    border-radius: 12px;
+    border-radius: 8px;
     margin-bottom: 30px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Recommendation Card Style */
-.menu-item {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 15px;
-    padding: 40px;
-    margin: 20px auto;
-    max-width: 600px;
+.intro h2 {
     text-align: center;
-    animation: fadeIn 0.5s ease-out;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    font-size: 1.5em; /* 다른 페이지 서브제목과 조화로운 크기 */
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    text-align: center;
+    color: #666;
+}
+
+/* Recommendation Area & Slot Machine */
+.recommendation {
+    text-align: center;
+}
+
+#menu-container {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.slot-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background: #2c3e50;
+    border-radius: 12px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.slot-text {
+    font-size: 2.5em;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+    animation: slotScroll 0.1s infinite linear;
+}
+
+.menu-item {
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .menu-item h3 {
-    font-size: 2.2em;
-    color: var(--primary-color);
+    font-size: 2.5em;
+    color: var(--secondary-color);
     margin-bottom: 15px;
-}
-
-.menu-item p {
-    font-size: 1.1em;
-    color: #666;
-    margin-bottom: 25px;
 }
 
 /* Buttons */
 #generate-btn {
-    padding: 18px 45px;
-    font-size: 1.2em;
+    padding: 15px 40px;
+    font-size: 1.1em;
     cursor: pointer;
     border: none;
-    border-radius: 50px;
+    border-radius: 8px;
     background-color: var(--secondary-color);
     color: white;
     font-weight: bold;
-    transition: all 0.3s;
-    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+    transition: opacity 0.3s;
 }
 
-#generate-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0,123,255,0.4);
-}
+#generate-btn:hover { opacity: 0.9; }
 
 .recipe-button {
     display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--secondary-color); /* 파란색으로 변경 */
+    padding: 12px 25px;
+    background-color: var(--secondary-color);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 5px;
     font-weight: bold;
-}
-
-/* Contact Page - Vertical Cards */
-.contact-grid {
-    display: flex;
-    flex-direction: column; /* 한 줄에 하나씩 배치 */
-    gap: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    text-align: left;
-    transition: transform 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.contact-card:hover {
-    transform: translateX(10px); /* 옆으로 살짝 미는 효과 */
-    border-color: var(--secondary-color);
-}
-
-.contact-card h3 {
-    margin: 0 0 10px 0;
-    color: var(--secondary-color);
-}
-
-.contact-card p {
-    margin: 0;
-    color: #555;
+    margin-top: 15px;
 }
 
 /* Food Grid for Category Pages */
 .food-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    gap: 20px;
 }
 
 .food-card {
     background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
 }
 
 /* Animations */
-.loader { display: flex; gap: 15px; font-size: 3rem; justify-content: center; }
-.loader span { animation: bounce 0.6s infinite alternate; }
-.loader span:nth-child(2) { animation-delay: 0.2s; }
-.loader span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes slotScroll { 
+    0% { transform: translateY(5px); } 
+    100% { transform: translateY(-5px); } 
+}
+@keyframes fadeIn { 
+    from { opacity: 0; transform: scale(0.95); } 
+    to { opacity: 1; transform: scale(1); } 
+}
 
-@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-20px); } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-footer { text-align: center; padding: 40px 0; color: #888; }
+/* Footer */
+footer {
+    background-color: var(--footer-bg-color);
+    text-align: center;
+    padding: 30px 0;
+    color: #666;
+    border-top: 1px solid #ddd;
+}
