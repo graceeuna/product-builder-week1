@@ -36,14 +36,11 @@ header .container {
     align-items: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.8em;
-}
-
 header h1 a {
     text-decoration: none;
     color: var(--primary-color);
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 nav ul {
@@ -61,212 +58,98 @@ nav a {
     text-decoration: none;
     color: var(--secondary-color);
     font-weight: bold;
-    font-size: 1.1em;
-}
-
-nav a:hover {
-    text-decoration: underline;
 }
 
 /* Main Content */
-main {
-    padding-bottom: 40px;
-}
-
-main h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Homepage Sections */
-.intro, .recommendation, .privacy-section, .about-section, #comments {
+.intro, .recommendation, #comments {
     background-color: var(--card-bg-color);
-    padding: 30px;
-    border-radius: 8px;
+    padding: 40px;
+    border-radius: 12px;
     margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.recommendation {
-    text-align: center;
+/* Recommendation Area */
+#menu-container {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    font-size: 1.5em;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #f0f2f5;
+    width: 100%;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 #generate-btn {
-    padding: 15px 30px;
-    font-size: 1em;
+    padding: 18px 40px;
+    font-size: 1.2em;
     cursor: pointer;
     border: none;
-    border-radius: 8px;
+    border-radius: 50px;
     background-color: var(--secondary-color);
     color: white;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
 }
 
 #generate-btn:hover {
-    opacity: 0.9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,123,255,0.4);
 }
 
-#menu-container .menu-item {
-    font-size: 1.5em;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f0f2f5;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+#generate-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
 }
 
-#menu-container .menu-item h3 {
-    margin-top: 0;
-}
-
-/* Food Grid Layout */
-.food-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.food-card {
-    background-color: var(--card-bg-color);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    display: flex; /* Added for aligning button */
-    flex-direction: column; /* Added for aligning button */
-    justify-content: space-between; /* Added for aligning button */
-}
-
-.food-card h3 {
-    margin-top: 0;
-    color: var(--secondary-color);
-}
-
-.food-card .recipe-button {
-    display: inline-block;
-    padding: 10px 15px;
-    margin-top: 15px;
-    background-color: var(--secondary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    align-self: flex-start; /* Aligns button to the left within flex container */
-}
-
-.food-card .recipe-button:hover {
-    background-color: #0056b3;
-}
-
-/* Recipe Pages */
-.recipe-page h2 {
-    text-align: left;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.recipe-container {
+/* Loading Animation */
+.loader {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: flex-start;
+    gap: 15px;
+    font-size: 3rem;
 }
 
-.recipe-section {
-    background-color: var(--card-bg-color);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: left;
-    flex: 1;
-    min-width: 300px;
+.loader span {
+    animation: bounce 0.6s infinite alternate;
 }
 
-.recipe-section.ingredients {
-    flex: 0 0 300px; /* Fixed width for ingredients on larger screens */
+.loader span:nth-child(2) { animation-delay: 0.2s; }
+.loader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
 }
 
-.recipe-section h3 {
-    color: var(--secondary-color);
-    margin-top: 0;
-    margin-bottom: 15px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-.recipe-section ul,
-.recipe-section ol {
-    padding-left: 20px;
-    margin-bottom: 15px;
-}
-
-.recipe-section li {
-    margin-bottom: 8px;
-}
-
-.back-button {
+.recipe-button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #6c757d;
+    padding: 12px 25px;
+    margin-top: 20px;
+    background-color: #28a745;
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #5a6268;
+    font-size: 0.9rem;
 }
 
 /* Footer */
 footer {
-    background-color: var(--footer-bg-color);
-    color: #666;
     text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid #ddd;
-}
-
-/* Contact Form */
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: var(--card-bg-color);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-form input,
-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
-    font-family: inherit;
-}
-
-form button {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-footer a {
-    color: var(--secondary-color);
+    padding: 30px 0;
+    color: #888;
 }
