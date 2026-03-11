@@ -66,13 +66,8 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Dark mode toggle hidden as requested */
-#dark-mode-toggle {
-    display: none;
-}
-
-/* Main Content Section */
-.intro, .features, .recommendation, .contact-section, #comments {
+/* Main Content Sections */
+.intro, .features, .recommendation, .contact-section, #comments, .about-section {
     background-color: var(--card-bg-color);
     padding: 40px;
     border-radius: 8px;
@@ -80,13 +75,14 @@ nav a:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.intro h2, .contact-section h2, .features h2 {
+.intro h2, .contact-section h2, .features h2, .about-section h2 {
     text-align: center;
     font-size: 1.8em;
     color: #000;
     margin-bottom: 25px;
 }
 
+/* Features Grid */
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -112,19 +108,42 @@ nav a:hover {
     font-size: 1.3em;
 }
 
-.feature-item p {
-    font-size: 1em;
-    color: #666;
-    line-height: 1.6;
+/* About Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
 }
 
-/* Contact Page Cards - Vertical Format */
+.about-card {
+    padding: 25px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: #fdfdfd;
+}
+
+.about-card h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+/* Contact Grid */
 .contact-grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
     max-width: 700px;
     margin: 0 auto;
+}
+
+.contact-info-card {
+    background: #f1f8ff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    border-left: 5px solid var(--secondary-color);
+    margin-bottom: 10px;
 }
 
 .contact-card {
@@ -135,21 +154,6 @@ nav a:hover {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.contact-card h3 {
-    margin: 0 0 15px 0;
-    color: var(--secondary-color);
-    font-size: 1.4em;
-    border-bottom: 2px solid #f8f9fa;
-    padding-bottom: 10px;
-}
-
-.contact-card p {
-    margin: 0;
-    font-size: 1.1em;
-    color: #555;
-}
-
-/* Contact Form Styling */
 .contact-form .form-group {
     margin-bottom: 20px;
 }
@@ -159,7 +163,6 @@ nav a:hover {
     margin-bottom: 8px;
     font-weight: bold;
     color: #333;
-    text-align: left;
 }
 
 .contact-form input, 
@@ -220,16 +223,6 @@ nav a:hover {
     animation: slotScroll 0.1s infinite linear;
 }
 
-.menu-item {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-.menu-item h3 {
-    font-size: 2.5em;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-}
-
 /* Buttons */
 #generate-btn {
     padding: 18px 45px;
@@ -242,18 +235,6 @@ nav a:hover {
     font-weight: bold;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,123,255,0.3);
-}
-
-#generate-btn:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0,123,255,0.4);
-    background-color: #0056b3;
-}
-
-#generate-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    transform: none;
 }
 
 .recipe-button {
@@ -329,11 +310,6 @@ nav a:hover {
     border-radius: 5px;
     font-weight: bold;
     margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #5a6268;
 }
 
 /* Footer */
@@ -347,3 +323,24 @@ footer {
 
 @keyframes slotScroll { 0% { transform: translateY(5px); } 100% { transform: translateY(-5px); } }
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+/* Food Grid for Categories */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.food-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
