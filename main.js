@@ -33,13 +33,27 @@ const renderSlotMachine = (menuName) => {
 };
 
 const displayMenu = (menu) => {
-    menuContainer.innerHTML = `
-        <div class="menu-item">
-            <h3>${menu.name}</h3>
-            <p>${menu.description}</p>
-            ${menu.recipeLink ? `<a href="${menu.recipeLink}" class="recipe-button">요리 방법 보기</a>` : ''}
-        </div>
-    `;
+    menuContainer.innerHTML = '';
+    const menuItem = document.createElement('div');
+    menuItem.classList.add('menu-item', 'fade-in');
+    
+    const menuName = document.createElement('h3');
+    menuName.textContent = menu.name;
+    menuItem.appendChild(menuName);
+
+    const menuDescription = document.createElement('p');
+    menuDescription.textContent = menu.description;
+    menuItem.appendChild(menuDescription);
+
+    if (menu.recipeLink) {
+        const recipeButton = document.createElement('a');
+        recipeButton.href = menu.recipeLink;
+        recipeButton.textContent = '요리 방법 보기';
+        recipeButton.classList.add('recipe-button');
+        menuItem.appendChild(recipeButton);
+    }
+
+    menuContainer.appendChild(menuItem);
 };
 
 generateBtn.addEventListener('click', () => {
